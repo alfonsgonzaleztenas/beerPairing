@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15508" systemVersion="18G103" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Beer" representedClassName="Beer" syncable="YES" codeGenerationType="class">
+        <attribute name="abv" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="beerDescription" attributeType="String"/>
+        <attribute name="image_url" optional="YES" attributeType="String"/>
+        <attribute name="name" attributeType="String"/>
+        <attribute name="tagline" attributeType="String" defaultValueString=""/>
+        <relationship name="food" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Food" inverseName="belongsTo" inverseEntity="Food"/>
+    </entity>
+    <entity name="Food" representedClassName="Food" syncable="YES" codeGenerationType="class">
+        <attribute name="beerName" attributeType="String"/>
+        <attribute name="food" attributeType="String"/>
+        <relationship name="belongsTo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Beer" inverseName="food" inverseEntity="Beer"/>
+    </entity>
+    <elements>
+        <element name="Beer" positionX="-292.0625" positionY="14.49609375" width="128" height="133"/>
+        <element name="Food" positionX="54.76953125" positionY="-60.07421875" width="128" height="88"/>
+    </elements>
+</model>

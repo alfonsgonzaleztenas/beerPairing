@@ -11,21 +11,33 @@
 		88553EDE2389185100B2240F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88553EDD2389185100B2240F /* SceneDelegate.swift */; };
 		88553EE02389185100B2240F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88553EDF2389185100B2240F /* ViewController.swift */; };
 		88553EE32389185100B2240F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88553EE12389185100B2240F /* Main.storyboard */; };
-		88553EE62389185100B2240F /* beerPairing.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 88553EE42389185100B2240F /* beerPairing.xcdatamodeld */; };
 		88553EE82389185700B2240F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88553EE72389185700B2240F /* Assets.xcassets */; };
 		88553EEB2389185700B2240F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88553EE92389185700B2240F /* LaunchScreen.storyboard */; };
+		88553EF423891B4D00B2240F /* beerData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 88553EF223891B4D00B2240F /* beerData.xcdatamodeld */; };
+		88553EF623891DAC00B2240F /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88553EF523891DAC00B2240F /* CoreDataManager.swift */; };
+		88553EF82389314F00B2240F /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88553EF72389314F00B2240F /* MainViewModel.swift */; };
+		88553EFD2389356900B2240F /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88553EFC2389356900B2240F /* ApiService.swift */; };
+		88553F022389559900B2240F /* BeerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88553F012389559900B2240F /* BeerCell.swift */; };
+		88553F0423895A7E00B2240F /* ImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88553F0323895A7E00B2240F /* ImageViewExtension.swift */; };
+		88553F06238992F700B2240F /* beerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88553F05238992F700B2240F /* beerDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		88553ED82389185100B2240F /* beerPairing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = beerPairing.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		88553ED82389185100B2240F /* PunkIpa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PunkIpa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88553EDB2389185100B2240F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		88553EDD2389185100B2240F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		88553EDF2389185100B2240F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		88553EE22389185100B2240F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		88553EE52389185100B2240F /* beerPairing.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = beerPairing.xcdatamodel; sourceTree = "<group>"; };
 		88553EE72389185700B2240F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		88553EEA2389185700B2240F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		88553EEC2389185700B2240F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		88553EF323891B4D00B2240F /* beerData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = beerData.xcdatamodel; sourceTree = "<group>"; };
+		88553EF523891DAC00B2240F /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		88553EF72389314F00B2240F /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		88553EFC2389356900B2240F /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
+		88553F012389559900B2240F /* BeerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerCell.swift; sourceTree = "<group>"; };
+		88553F0323895A7E00B2240F /* ImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewExtension.swift; sourceTree = "<group>"; };
+		88553F05238992F700B2240F /* beerDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = beerDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,7 +62,7 @@
 		88553ED92389185100B2240F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				88553ED82389185100B2240F /* beerPairing.app */,
+				88553ED82389185100B2240F /* PunkIpa.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -58,16 +70,54 @@
 		88553EDA2389185100B2240F /* beerPairing */ = {
 			isa = PBXGroup;
 			children = (
+				88553F012389559900B2240F /* BeerCell.swift */,
 				88553EDB2389185100B2240F /* AppDelegate.swift */,
 				88553EDD2389185100B2240F /* SceneDelegate.swift */,
 				88553EDF2389185100B2240F /* ViewController.swift */,
-				88553EE12389185100B2240F /* Main.storyboard */,
+				88553F05238992F700B2240F /* beerDetailViewController.swift */,
 				88553EE72389185700B2240F /* Assets.xcassets */,
-				88553EE92389185700B2240F /* LaunchScreen.storyboard */,
 				88553EEC2389185700B2240F /* Info.plist */,
-				88553EE42389185100B2240F /* beerPairing.xcdatamodeld */,
+				88553F002389558400B2240F /* Extensions */,
+				88553EFB2389326F00B2240F /* ViewModel */,
+				88553EFA2389326100B2240F /* View */,
+				88553EF92389325800B2240F /* Model */,
+				88553EFC2389356900B2240F /* ApiService.swift */,
 			);
 			path = beerPairing;
+			sourceTree = "<group>";
+		};
+		88553EF92389325800B2240F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				88553EF223891B4D00B2240F /* beerData.xcdatamodeld */,
+				88553EF523891DAC00B2240F /* CoreDataManager.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		88553EFA2389326100B2240F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				88553EE92389185700B2240F /* LaunchScreen.storyboard */,
+				88553EE12389185100B2240F /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		88553EFB2389326F00B2240F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				88553EF72389314F00B2240F /* MainViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		88553F002389558400B2240F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				88553F0323895A7E00B2240F /* ImageViewExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -87,7 +137,7 @@
 			);
 			name = beerPairing;
 			productName = beerPairing;
-			productReference = 88553ED82389185100B2240F /* beerPairing.app */;
+			productReference = 88553ED82389185100B2240F /* PunkIpa.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -141,10 +191,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				88553EE62389185100B2240F /* beerPairing.xcdatamodeld in Sources */,
+				88553EF623891DAC00B2240F /* CoreDataManager.swift in Sources */,
+				88553F0423895A7E00B2240F /* ImageViewExtension.swift in Sources */,
 				88553EE02389185100B2240F /* ViewController.swift in Sources */,
 				88553EDC2389185100B2240F /* AppDelegate.swift in Sources */,
 				88553EDE2389185100B2240F /* SceneDelegate.swift in Sources */,
+				88553EF82389314F00B2240F /* MainViewModel.swift in Sources */,
+				88553F022389559900B2240F /* BeerCell.swift in Sources */,
+				88553F06238992F700B2240F /* beerDetailViewController.swift in Sources */,
+				88553EFD2389356900B2240F /* ApiService.swift in Sources */,
+				88553EF423891B4D00B2240F /* beerData.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,7 +351,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = alfonsgonzaleztenas.beerPairing;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = PunkIpa;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -312,7 +368,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = alfonsgonzaleztenas.beerPairing;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = PunkIpa;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -342,13 +398,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		88553EE42389185100B2240F /* beerPairing.xcdatamodeld */ = {
+		88553EF223891B4D00B2240F /* beerData.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				88553EE52389185100B2240F /* beerPairing.xcdatamodel */,
+				88553EF323891B4D00B2240F /* beerData.xcdatamodel */,
 			);
-			currentVersion = 88553EE52389185100B2240F /* beerPairing.xcdatamodel */;
-			path = beerPairing.xcdatamodeld;
+			currentVersion = 88553EF323891B4D00B2240F /* beerData.xcdatamodel */;
+			path = beerData.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
