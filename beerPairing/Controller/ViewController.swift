@@ -11,17 +11,15 @@ import CoreData
 
 class ViewController: UIViewController {
 
-    var viewModel : MainViewModel?
+    var viewModel : MainViewModel!
     
+    @IBOutlet weak var sortButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var beerSearchBar: UISearchBar!
-    
-    var beersArray = [Beer]()
-    let manager = CoreDataManager()
-    let service = APIService()
-        
+           
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel = MainViewModel()
 
     }
     
@@ -34,35 +32,7 @@ class ViewController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
-    private func saveInCoreDataWith(array: [[String: Any]]) {
-        _ = array.map{manager.createBeerEntityFrom(dictionary: $0 as [String : AnyObject])}
-        manager.saveContext()
-        beersArray = manager.fetchBeers()
-        tableView.reloadData()
-     }
-     
 
-    private func searchFood (foodToSearch : String){
-        
-        beersArray = manager.fetchBeersWithFood(foodToSearch: foodToSearch)
-        
-        if beersArray.count > 0  {
-            tableView.reloadData()
-        } else{
-            service.getDataWith(food: foodToSearch) { (result) in
-                 switch result {
-                 case .Success(let data):
-                     self.saveInCoreDataWith(array: data)
-                 case .Error(let message):
-                     DispatchQueue.main.async {
-                         self.showAlertWith(title: "Error", message: message)
-                     }
-                 }
-             }
-        }
-
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "beerDetail" {
@@ -73,14 +43,27 @@ class ViewController: UIViewController {
         }
          
     }
-    
+
+    @IBAction func sortPressed(_ sender: UIButton) {
+        sender.setTitle(viewModel.sort(), for: .normal)
+        self.tableView.reloadData()
+    }
     
 }
 
 extension ViewController : UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchFood(foodToSearch: searchBar.text!)
         searchBar.resignFirstResponder()
+        viewModel.searchFood(foodToSearch: searchBar.text!) { (result) in
+            switch result {
+                case .SuccessVoid:
+                    self.tableView.reloadData()
+                case .Error(let message):
+                    DispatchQueue.main.async {
+                        self.showAlertWith(title: "Error", message: message)
+                    }
+            }
+        }
     }
 }
 
@@ -96,11 +79,3 @@ extension ViewController : UITableViewDataSource {
     }
 }
 
-extension ViewController : UITableViewDelegate {
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 120
-    }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 120//UITableView.automaticDimension
-    }
-}

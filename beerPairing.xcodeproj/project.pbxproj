@@ -71,17 +71,16 @@
 			isa = PBXGroup;
 			children = (
 				88553F012389559900B2240F /* BeerCell.swift */,
+				88553EFC2389356900B2240F /* ApiService.swift */,
 				88553EDB2389185100B2240F /* AppDelegate.swift */,
 				88553EDD2389185100B2240F /* SceneDelegate.swift */,
-				88553EDF2389185100B2240F /* ViewController.swift */,
-				88553F05238992F700B2240F /* beerDetailViewController.swift */,
-				88553EE72389185700B2240F /* Assets.xcassets */,
-				88553EEC2389185700B2240F /* Info.plist */,
 				88553F002389558400B2240F /* Extensions */,
+				88553EF92389325800B2240F /* Model */,
+				88553F072389D7D200B2240F /* Controller */,
 				88553EFB2389326F00B2240F /* ViewModel */,
 				88553EFA2389326100B2240F /* View */,
-				88553EF92389325800B2240F /* Model */,
-				88553EFC2389356900B2240F /* ApiService.swift */,
+				88553EE72389185700B2240F /* Assets.xcassets */,
+				88553EEC2389185700B2240F /* Info.plist */,
 			);
 			path = beerPairing;
 			sourceTree = "<group>";
@@ -118,6 +117,15 @@
 				88553F0323895A7E00B2240F /* ImageViewExtension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		88553F072389D7D200B2240F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				88553EDF2389185100B2240F /* ViewController.swift */,
+				88553F05238992F700B2240F /* beerDetailViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

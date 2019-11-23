@@ -77,8 +77,10 @@ class CoreDataManager {
 
     func fetchBeers() -> [Beer] {
         let fetchRequest : NSFetchRequest<Beer> = Beer.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "abv", ascending: true)]
         do{
             let result = try container.viewContext.fetch(fetchRequest)
+            
             return result
         } catch{
             print ("Error obtain beers")
@@ -101,6 +103,7 @@ class CoreDataManager {
         let fetchRequest = NSFetchRequest<Beer>(entityName: "Beer")
         let predicate = NSPredicate(format: "ANY food.food CONTAINS[c] %@", foodToSearch!)
         fetchRequest.predicate = predicate
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "abv", ascending: true)]
         do{
             let result = try container.viewContext.fetch(fetchRequest)
             return result
