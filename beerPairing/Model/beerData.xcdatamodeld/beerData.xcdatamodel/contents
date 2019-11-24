@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15508" systemVersion="18G103" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15508" systemVersion="18G1012" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Beer" representedClassName="Beer" syncable="YES" codeGenerationType="class">
         <attribute name="abv" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="beerDescription" attributeType="String"/>
@@ -13,8 +13,12 @@
         <attribute name="food" attributeType="String"/>
         <relationship name="belongsTo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Beer" inverseName="food" inverseEntity="Beer"/>
     </entity>
+    <entity name="Search" representedClassName="Search" syncable="YES" codeGenerationType="class">
+        <attribute name="food" optional="YES" attributeType="String"/>
+    </entity>
     <elements>
         <element name="Beer" positionX="-292.0625" positionY="14.49609375" width="128" height="133"/>
         <element name="Food" positionX="54.76953125" positionY="-60.07421875" width="128" height="88"/>
+        <element name="Search" positionX="-343.07421875" positionY="-130.6015625" width="128" height="58"/>
     </elements>
 </model>

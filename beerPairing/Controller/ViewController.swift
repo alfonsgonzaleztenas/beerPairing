@@ -13,14 +13,13 @@ class ViewController: UIViewController {
 
     var viewModel : MainViewModel!
     
-    @IBOutlet weak var sortButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var beerSearchBar: UISearchBar!
            
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = MainViewModel()
-
+        self.tableView.keyboardDismissMode = .onDrag
     }
     
     func showAlertWith(title: String, message: String, style: UIAlertController.Style = .alert) {
@@ -34,19 +33,25 @@ class ViewController: UIViewController {
     
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         if segue.identifier == "beerDetail" {
             let destinationVC = segue.destination as! beerDetailViewController
             if let selectedRow = tableView.indexPathForSelectedRow?.row {
                 destinationVC.beerSelected = beersArray[selectedRow]
             }
         }
-         
     }
 
-    @IBAction func sortPressed(_ sender: UIButton) {
-        sender.setTitle(viewModel.sort(), for: .normal)
-        self.tableView.reloadData()
+    @IBAction func sortButtonPressed(_ sender: UIBarButtonItem) {
+        beerSearchBar.resignFirstResponder()
+        sender.title = viewModel.sort()
+        if beersArray.count > 0 {
+            self.tableView.setContentOffset(.zero, animated: false)
+            self.tableView.reloadData()
+        }
+    }
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
     }
     
 }
@@ -58,6 +63,7 @@ extension ViewController : UISearchBarDelegate {
             switch result {
                 case .SuccessVoid:
                     self.tableView.reloadData()
+                    self.tableView.setContentOffset(.zero, animated: false)
                 case .Error(let message):
                     DispatchQueue.main.async {
                         self.showAlertWith(title: "Error", message: message)
@@ -65,9 +71,11 @@ extension ViewController : UISearchBarDelegate {
             }
         }
     }
+    
 }
 
 extension ViewController : UITableViewDataSource {
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return beersArray.count
     }
@@ -77,5 +85,7 @@ extension ViewController : UITableViewDataSource {
         cell.setBeerCellWith(beer: beersArray[indexPath.row])
         return cell
     }
+    
+    
 }
 

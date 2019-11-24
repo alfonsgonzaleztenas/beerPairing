@@ -28,13 +28,13 @@ class APIService: NSObject {
     
     func getDataWith(food : String, completion: @escaping (Result<[[String: Any]]>) -> Void) {
         
-        let urlString = food == "" ? urlApi : urlApi + "?food=\(food)&per_page=100"
+        let urlString = food == "" ? urlApi : urlApi + "?food=\(food)&per_page=80"
         
         guard let url = URL(string: urlString) else { return completion(.Error("Invalid URL, we can't update your feed")) }
 
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             
-         guard error == nil else { return completion(.Error(error!.localizedDescription)) }
+            guard error == nil else { return completion(.Error(error!.localizedDescription)) }
             guard let data = data else { return completion(.Error(error?.localizedDescription ?? "There are no new Items to show"))}
             
              do{
@@ -50,24 +50,8 @@ class APIService: NSObject {
                  print("Error", parsingError)
                 return completion(.Error(error?.localizedDescription ?? "There are no new Items to show"))
             }
-                /*
-                do {
-                    if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
-                        
-                        
-                        guard let itemsJsonArray = json["items"] as? [[String: AnyObject]] else
-             {
-                            return completion(.Error(error?.localizedDescription ?? "There are no new Items to show"))
-                        }
-                        DispatchQueue.main.async {
-                            completion(.Success(itemsJsonArray))
-                        }
-                    }
-                } catch let error {
-                    return completion(.Error(error.localizedDescription))
-                }
- */
-            }.resume()
+
+        }.resume()
     }
 }
 

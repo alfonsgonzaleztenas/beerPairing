@@ -22,25 +22,30 @@ class MainViewModel {
     var ascending = true
     
     func sort() -> String {
-        beersArray = ascending ? beersArray.sorted(by: { $0.abv > $1.abv }) : beersArray.sorted(by: { $0.abv < $1.abv })
         ascending = !ascending
+        beersArray = getSortedArray(beers: beersArray)
         return ascending ? "Stronger First" : "Lighter first"
+    }
+    
+    func getSortedArray (beers : [Beer]) -> [Beer] {
+        return ascending ? beers.sorted(by: { $0.abv < $1.abv }) : beers.sorted(by: { $0.abv > $1.abv })
     }
     
     func searchFood (foodToSearch : String, completion: @escaping (ResultSearch) -> Void) {
         
-        beersArray = manager.fetchBeersWithFood(foodToSearch: foodToSearch)
-        
-        if beersArray.count > 0  {
+        //Si ja l'hem buscat, busquem OffLine, sino OnLine
+        beersArray.removeAll()
+        if manager.fetchSearchFood(foodToSearch: foodToSearch){
+            beersArray = getSortedArray(beers: manager.fetchBeersWithFood(foodToSearch: foodToSearch))
             return completion(.SuccessVoid)
-        } else{
+        }else{
             service.getDataWith(food: foodToSearch) { (result) in
                  switch result {
                  case .Success(let data):
-                    //self.saveInCoreDataWith(array: data)
-                    _ = data.map{self.manager.createBeerEntityFrom(dictionary: $0 as [String : AnyObject])}
+                    let beers = data.map{self.manager.createBeerEntityFrom(dictionary: $0 as [String : AnyObject])}
+                    self.manager.insertSearch(food: foodToSearch)
                     self.manager.saveContext()
-                    beersArray = self.manager.fetchBeers()
+                    beersArray =  self.getSortedArray(beers: beers as! [Beer])
                     return completion(.SuccessVoid)
                     
                  case .Error(let message):

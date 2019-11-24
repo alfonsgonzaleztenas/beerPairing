@@ -25,7 +25,9 @@ class BeerCell : UITableViewCell {
             
             self.beerNameLabel.text = beer.name
             self.beerTalLabel.text = beer.tagline
-            self.beerABVLabel.text = String(format:"%.1fº", beer.abv)
+            self.beerABVLabel.text = String(format:"%.1f%", beer.abv)
+            self.beerABVLabel.layer.masksToBounds = true
+            self.beerABVLabel.layer.cornerRadius = self.beerABVLabel.frame.width / 2
             if let url = beer.image_url {
                 self.beerImageView.loadImageUsingCacheWithURLString(url, placeHolder: UIImage(named: "imageholder"))
             }

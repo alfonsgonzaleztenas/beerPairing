@@ -37,9 +37,35 @@ class CoreDataManager {
         }
     }
     
+    func insertSearch (food : String){
+        let context =  container.viewContext
+        let search = Search(context:context)
+        search.food = food
+
+    }
+    
+    func getBeer (name : String) -> Beer? {
+        let fetchRequest = NSFetchRequest<Beer>(entityName: "Beer")
+        let predicate = NSPredicate(format: "name ==[c] %@", name)
+        fetchRequest.predicate = predicate
+        do{
+            let result = try container.viewContext.fetch(fetchRequest)
+            return result.count == 1 ? result[0] : nil
+        } catch{
+            print ("Error obtain food")
+        }
+        return nil
+    }
+    
     func createBeerEntityFrom(dictionary: [String: AnyObject]) -> NSManagedObject? {
        
         let context =  container.viewContext
+        
+        if let beer = getBeer(name: (dictionary["name"] as? String)!)  {
+            return beer
+        }
+
+        
         if let beerEntity = NSEntityDescription.insertNewObject(forEntityName: "Beer", into: context) as? Beer {
             beerEntity.name = dictionary["name"] as? String
             beerEntity.abv = (dictionary["abv"] as? Double)!
@@ -114,7 +140,20 @@ class CoreDataManager {
     }
     
     
-
+    func fetchSearchFood(foodToSearch : String? = "") -> Bool {
+        let fetchRequest = NSFetchRequest<Search>(entityName: "Search")
+        let predicate = NSPredicate(format: "food ==[c] %@", foodToSearch!)
+        fetchRequest.predicate = predicate
+        do{
+            let result = try container.viewContext.fetch(fetchRequest)
+            return result.count > 0
+        } catch{
+            print ("Error obtain food")
+        }
+        return false
+    }
+    
+    
 }
 
 
