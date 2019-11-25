@@ -19,6 +19,8 @@ class beerDetailViewController: UIViewController {
     @IBOutlet weak var detailTagLabel: UILabel!
     @IBOutlet weak var detailFoodLabel: UILabel!
     @IBOutlet weak var detailABVLabel: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

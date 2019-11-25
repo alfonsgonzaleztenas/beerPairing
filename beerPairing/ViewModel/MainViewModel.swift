@@ -21,19 +21,26 @@ class MainViewModel {
     let service = APIService()
     var ascending = true
     
+    /// Ordenem la llista de cerveses a la inversa de l'ordre actual
+    /// - Retornem el text del botó
     func sort() -> String {
         ascending = !ascending
         beersArray = getSortedArray(beers: beersArray)
         return ascending ? "Stronger First" : "Lighter first"
     }
     
+    /// Ordenem l'array segons ABV, asc o desc
+    /// - Parameter beers: Array que volem ordenar
     func getSortedArray (beers : [Beer]) -> [Beer] {
         return ascending ? beers.sorted(by: { $0.abv < $1.abv }) : beers.sorted(by: { $0.abv > $1.abv })
     }
     
+    /// Busquem el menjar
+    /**
+            - Si l'hem consultat abans, mostrem la informació de la BD
+            - Si no l'hem buscat abans, consultem la API
+     */
     func searchFood (foodToSearch : String, completion: @escaping (ResultSearch) -> Void) {
-        
-        //Si ja l'hem buscat, busquem OffLine, sino OnLine
         beersArray.removeAll()
         if manager.fetchSearchFood(foodToSearch: foodToSearch){
             beersArray = getSortedArray(beers: manager.fetchBeersWithFood(foodToSearch: foodToSearch))
