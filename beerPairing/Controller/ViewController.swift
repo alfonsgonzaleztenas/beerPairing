@@ -50,10 +50,6 @@ class ViewController: UIViewController {
         }
     }
     
-    override var prefersStatusBarHidden: Bool {
-        return true
-    }
-    
 }
 
 extension ViewController : UISearchBarDelegate {
@@ -73,6 +69,7 @@ extension ViewController : UISearchBarDelegate {
     }
     
 }
+
 
 extension ViewController : UITableViewDataSource {
 

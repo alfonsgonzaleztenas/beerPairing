@@ -12,13 +12,14 @@ import UIKit
 class BeerCell : UITableViewCell {
     
     @IBOutlet weak var beerNameLabel: UILabel!
-    
     @IBOutlet weak var beerImageView: UIImageView!
-    
     @IBOutlet weak var beerABVLabel: UILabel!
-    
     @IBOutlet weak var beerTalLabel: UILabel!
     
+    /**
+    - Establim els valors visuals de la cela
+    - Parameter beer: Objecte Beer que mostrarem
+     */
     func setBeerCellWith(beer: Beer) {
         
         DispatchQueue.main.async {

@@ -13,8 +13,10 @@ let imageCache = NSCache<NSString, UIImage>()
 
 extension UIImageView {
 
+    /// Descarreguem la imatge o la obtenim del cache
+    /// - Parameter URLString: URL de descàrrega de la imatge
+    /// - Parameter placeHolder : Imatge per defecte en cas d'error
     func loadImageUsingCacheWithURLString(_ URLString: String, placeHolder: UIImage?) {
-        
         self.image = nil
         if let cachedImage = imageCache.object(forKey: NSString(string: URLString)) {
             self.image = cachedImage

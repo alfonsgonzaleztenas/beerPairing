@@ -18,6 +18,7 @@ class CoreDataManager {
         setupDatabase()
     }
     
+    /// Inicialitzem la BD
     private func setupDatabase() {
         container.loadPersistentStores { (description, error) in
             if let error = error {
@@ -27,6 +28,7 @@ class CoreDataManager {
         print ("Database loaded")
     }
     
+    /// Guardem el context actual
     func saveContext() {
         let context = container.viewContext
         do {
@@ -37,6 +39,8 @@ class CoreDataManager {
         }
     }
     
+    /// Insertem el menjar buscar
+    /// - Parameter food: Menjar que hem buscat i volem guardar
     func insertSearch (food : String){
         let context =  container.viewContext
         let search = Search(context:context)
@@ -44,6 +48,8 @@ class CoreDataManager {
 
     }
     
+    /// Obtenim si ja hem guardat una cervesa amb anterioritat
+    /// - Parameter name: Nom de la cervesa que volem comprovar
     func getBeer (name : String) -> Beer? {
         let fetchRequest = NSFetchRequest<Beer>(entityName: "Beer")
         let predicate = NSPredicate(format: "name ==[c] %@", name)
@@ -57,15 +63,13 @@ class CoreDataManager {
         return nil
     }
     
+    /// Creem l'objecte Beer i els seus menjars associats amb el diccionari informat
+    /// - Parameter dictionary: Valors de l'objecte cervesa que volem inserir
     func createBeerEntityFrom(dictionary: [String: AnyObject]) -> NSManagedObject? {
        
         let context =  container.viewContext
-        
-        if let beer = getBeer(name: (dictionary["name"] as? String)!)  {
-            return beer
-        }
+        if let beer = getBeer(name: (dictionary["name"] as? String)!)  {return beer}
 
-        
         if let beerEntity = NSEntityDescription.insertNewObject(forEntityName: "Beer", into: context) as? Beer {
             beerEntity.name = dictionary["name"] as? String
             beerEntity.abv = (dictionary["abv"] as? Double)!
@@ -89,6 +93,7 @@ class CoreDataManager {
         return nil
     }
     
+    /// Eliminem totes les Beer
     func removeBeers() {
         let context =  container.viewContext
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Beer")
@@ -101,6 +106,7 @@ class CoreDataManager {
         }
     }
 
+    /// Retornem un array de Beer amb tot el que tenim ordenat per ABV asc
     func fetchBeers() -> [Beer] {
         let fetchRequest : NSFetchRequest<Beer> = Beer.fetchRequest()
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "abv", ascending: true)]
@@ -114,6 +120,7 @@ class CoreDataManager {
         return []
     }
     
+    /// Retornem un array de Food
     func fetchFood() -> [Food] {
         let fetchRequest : NSFetchRequest<Food> = Food.fetchRequest()
         do{
@@ -125,6 +132,8 @@ class CoreDataManager {
         return []
     }
     
+    /// Retornem un array de Beer que estiguin relacionats amb el menjar informat
+    /// - Parameter foodToSearch: Menjar a relacionar
     func fetchBeersWithFood(foodToSearch : String? = "") -> [Beer] {
         let fetchRequest = NSFetchRequest<Beer>(entityName: "Beer")
         let predicate = NSPredicate(format: "ANY food.food CONTAINS[c] %@", foodToSearch!)
@@ -139,7 +148,8 @@ class CoreDataManager {
         return []
     }
     
-    
+    /// Validem si un menjar ja està inserit
+    /// - Parameter foodToSearch: Menjar a comprovar
     func fetchSearchFood(foodToSearch : String? = "") -> Bool {
         let fetchRequest = NSFetchRequest<Search>(entityName: "Search")
         let predicate = NSPredicate(format: "food ==[c] %@", foodToSearch!)

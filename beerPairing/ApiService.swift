@@ -8,39 +8,34 @@
 
 import Foundation
 
+enum Result<T> {
+    case Success(T)
+    case Error(String)
+}
+
 class APIService: NSObject {
     
+    ///Direcció de la API
     let urlApi = "https://api.punkapi.com/v2/beers"
-    
-    
-    let query = ""
-    lazy var endPoint: String = {
-        return "https://api.punkapi.com/v2/beers\(self.query)"
-    }()
- 
-    /*
-    let query = "dogs"
-    lazy var endPoint: String = {
-        return "https://api.flickr.com/services/feeds/photos_public.gne?format=json&tags=\(self.query)&nojsoncallback=1#"
-    }()
-
-*/
-    
+   
+    /**
+        Funcio que busca les cerveses que fan maridatge amb el menjar seleccionat i ens parseja el JSON
+     - Parameter food: Menjar que volem trobar la relació
+     - Parameter completion : Resultat de la consulta
+            - Retornem un String en cas d'error
+            - Retornem l'array de valors en cas d'èxit
+    */
     func getDataWith(food : String, completion: @escaping (Result<[[String: Any]]>) -> Void) {
         
         let urlString = food == "" ? urlApi : urlApi + "?food=\(food)&per_page=80"
-        
-        guard let url = URL(string: urlString) else { return completion(.Error("Invalid URL, we can't update your feed")) }
+        guard let url = URL(string: urlString) else { return completion(.Error("Invalid URL, we can't update")) }
 
         URLSession.shared.dataTask(with: url) { (data, response, error) in
-            
             guard error == nil else { return completion(.Error(error!.localizedDescription)) }
-            guard let data = data else { return completion(.Error(error?.localizedDescription ?? "There are no new Items to show"))}
+            guard let data = data else { return completion(.Error(error?.localizedDescription ?? "Error getData"))}
             
              do{
-                 //here dataResponse received from a network request
                 if let itemsJsonArray = try JSONSerialization.jsonObject(with:data, options: []) as? [[String: Any]] {
-                    //print(itemsJsonArray) //Response result
                     DispatchQueue.main.async {
                         completion(.Success(itemsJsonArray))
                     }
@@ -48,14 +43,11 @@ class APIService: NSObject {
                 
               } catch let parsingError {
                  print("Error", parsingError)
-                return completion(.Error(error?.localizedDescription ?? "There are no new Items to show"))
+                return completion(.Error(error?.localizedDescription ?? "Error getData"))
             }
 
         }.resume()
     }
 }
 
-enum Result<T> {
-    case Success(T)
-    case Error(String)
-}
+

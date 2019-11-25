@@ -15,15 +15,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="340" estimatedRowHeight="340" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SBT-eb-XNp">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="340" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SBT-eb-XNp">
                                 <rect key="frame" x="0.0" y="100" width="375" height="567"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="beercell" rowHeight="340" id="d51-ZC-cOv" customClass="BeerCell" customModule="PunkIpa" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="340"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="beercell" id="d51-ZC-cOv" customClass="BeerCell" customModule="PunkIpa" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="336.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="d51-ZC-cOv" id="MM0-On-SKI">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="340"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="336.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xUS-c9-uFp">
@@ -34,6 +34,9 @@
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tagline" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EJK-iG-hBV">
                                                     <rect key="frame" x="20" y="258" width="335" height="22.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="22.5" id="DMu-IH-HXo"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" name="Thonburi" family="Thonburi" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.68627450980000004" blue="0.85882352939999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -62,6 +65,7 @@
                                                 <constraint firstItem="xUS-c9-uFp" firstAttribute="top" secondItem="MM0-On-SKI" secondAttribute="top" constant="5" id="TNY-Dj-kxJ"/>
                                                 <constraint firstAttribute="trailing" secondItem="xUS-c9-uFp" secondAttribute="trailing" id="bug-bG-C2S"/>
                                                 <constraint firstItem="EJK-iG-hBV" firstAttribute="top" secondItem="Ldo-4m-8eY" secondAttribute="bottom" constant="10" id="ezT-NN-6oI"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="EJK-iG-hBV" secondAttribute="bottom" constant="45" id="lFM-GB-6hx"/>
                                                 <constraint firstItem="EJK-iG-hBV" firstAttribute="leading" secondItem="MM0-On-SKI" secondAttribute="leadingMargin" constant="5" id="nZX-5f-A4a"/>
                                                 <constraint firstAttribute="trailing" secondItem="Ldo-4m-8eY" secondAttribute="trailing" constant="5" id="rjg-u3-d6v"/>
                                                 <constraint firstItem="EZk-wJ-Ewj" firstAttribute="top" secondItem="MM0-On-SKI" secondAttribute="topMargin" constant="5" id="suB-gc-DxV"/>
@@ -110,7 +114,6 @@
                                 </connections>
                             </searchBar>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="SBT-eb-XNp" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="CAM-7U-R6u"/>
@@ -144,7 +147,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Fl4-7U-WkG">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="182"/>
+                                <rect key="frame" x="0.0" y="8" width="375" height="182"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Fl4-7U-WkG" secondAttribute="height" multiplier="375:182" id="lZo-0G-GPb"/>
                                 </constraints>
@@ -161,31 +164,31 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kh6-NZ-EZ9">
-                                <rect key="frame" x="8" y="190" width="359" height="30.5"/>
+                                <rect key="frame" x="8" y="198" width="359" height="30.5"/>
                                 <fontDescription key="fontDescription" name="Thonburi-Bold" family="Thonburi" pointSize="23"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Tag" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N1e-Yp-8hX">
-                                <rect key="frame" x="8" y="228.5" width="359" height="25"/>
+                                <rect key="frame" x="8" y="236.5" width="359" height="25"/>
                                 <fontDescription key="fontDescription" name="Thonburi-Light" family="Thonburi" pointSize="19"/>
                                 <color key="textColor" red="0.0" green="0.68627450980000004" blue="0.85882352939999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" text="Description" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7F9-oY-Qta">
-                                <rect key="frame" x="8" y="261.5" width="359" height="20"/>
+                                <rect key="frame" x="8" y="269.5" width="359" height="20"/>
                                 <fontDescription key="fontDescription" name="Thonburi" family="Thonburi" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="254" text="Our Menu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kMu-sv-uv7">
-                                <rect key="frame" x="8" y="297.5" width="359" height="20"/>
+                                <rect key="frame" x="8" y="305.5" width="359" height="20"/>
                                 <fontDescription key="fontDescription" name="Thonburi-Light" family="Thonburi" pointSize="15"/>
                                 <color key="textColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="254" text="Label" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EKc-5J-EM6">
-                                <rect key="frame" x="8" y="325.5" width="359" height="20"/>
+                                <rect key="frame" x="8" y="333.5" width="359" height="20"/>
                                 <fontDescription key="fontDescription" name="Thonburi" family="Thonburi" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -200,7 +203,7 @@
                             <constraint firstItem="Fl4-7U-WkG" firstAttribute="leading" secondItem="L9n-iA-ytz" secondAttribute="leading" id="AOS-gp-kUj"/>
                             <constraint firstItem="L9n-iA-ytz" firstAttribute="trailing" secondItem="kh6-NZ-EZ9" secondAttribute="trailing" constant="8" id="Gwt-q9-OOP"/>
                             <constraint firstItem="L9n-iA-ytz" firstAttribute="trailing" secondItem="7F9-oY-Qta" secondAttribute="trailing" constant="8" id="VCu-QZ-vyi"/>
-                            <constraint firstItem="Fl4-7U-WkG" firstAttribute="top" secondItem="L9n-iA-ytz" secondAttribute="top" id="VjU-45-UjP"/>
+                            <constraint firstItem="Fl4-7U-WkG" firstAttribute="top" secondItem="L9n-iA-ytz" secondAttribute="top" constant="8" id="VjU-45-UjP"/>
                             <constraint firstItem="L9n-iA-ytz" firstAttribute="trailing" secondItem="kMu-sv-uv7" secondAttribute="trailing" constant="8" id="aX5-HQ-xjJ"/>
                             <constraint firstItem="7F9-oY-Qta" firstAttribute="leading" secondItem="L9n-iA-ytz" secondAttribute="leading" constant="8" id="bOu-LS-jxs"/>
                             <constraint firstItem="RE3-9P-jXI" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="L9n-iA-ytz" secondAttribute="leading" symbolic="YES" id="cWi-JY-R3r"/>
